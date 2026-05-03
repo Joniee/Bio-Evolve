@@ -1,8 +1,8 @@
-extends Area2D
+extends StaticBody2D
 
 const SPEED = deg_to_rad(5)
 
-const attack_cooldown = 1.0
+const attack_cooldown = 0.5
 var attack_timer := 0.0
 
 var look_direction := Vector2.RIGHT
@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		rotation = 0
 		visible = false
 		$CollisionWeapon.disabled = true
-		
+	
 	
 		
 	
@@ -46,10 +46,3 @@ func aim_direction():
 	else:
 		# Si no, usamos la posición del ratón relativa al personaje
 		look_direction = (get_global_mouse_position() - global_position).normalized()
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if(body.has_meta("Life")):
-		body.set_meta("Life", body.get_meta("Life") - get_meta("Damage"))
-	
-		

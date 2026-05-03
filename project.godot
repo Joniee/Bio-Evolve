@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bio-Evolve"
-run/main_scene="uid://ck1m8g5np0u0o"
+run/main_scene="uid://b5p3im4cvv5mj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

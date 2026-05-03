@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://b5p3im4cvv5mj"]
+
+[ext_resource type="Script" uid="uid://dutwmmaeakjdq" path="res://new_game_btn.gd" id="1_7jlr6"]
+[ext_resource type="Script" uid="uid://cri8ivcfhrg1e" path="res://quit_game.gd" id="2_enwfr"]
+
+[node name="Node2D" type="Node2D" unique_id=453089057]
+
+[node name="New Game Btn" type="Button" parent="." unique_id=1268825306]
+offset_left = -297.0
+offset_top = -9.0
+offset_right = 303.0
+offset_bottom = 91.0
+text = "New game"
+script = ExtResource("1_7jlr6")
+
+[node name="Options Btn" type="Button" parent="." unique_id=444508257]
+offset_left = -298.0
+offset_top = 154.0
+offset_right = 302.0
+offset_bottom = 254.0
+text = "Options"
+
+[node name="Quit game" type="Button" parent="." unique_id=1780742807]
+offset_left = -295.0
+offset_top = 319.0
+offset_right = 305.0
+offset_bottom = 419.0
+text = "Quit game"
+script = ExtResource("2_enwfr")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1769629794]
+
+[node name="Label" type="Label" parent="." unique_id=1610217382]
+offset_left = -634.0
+offset_top = -493.0
+offset_right = 636.0
+offset_bottom = -144.0
+theme_override_colors/font_color = Color(0.39607844, 0.7647059, 0.2901961, 1)
+theme_override_font_sizes/font_size = 256
+text = "Bio-Evolve"
+language = "en"
+
+[node name="Label2" type="Label" parent="." unique_id=1905322363]
+offset_left = 831.0
+offset_top = 499.0
+offset_right = 930.0
+offset_bottom = 522.0
+text = "Version 0.2.2"
+
+[connection signal="pressed" from="New Game Btn" to="New Game Btn" method="_on_pressed"]
+[connection signal="pressed" from="Quit game" to="Quit game" method="_on_pressed"]

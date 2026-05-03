@@ -1,10 +1,13 @@
 [gd_scene format=4 uid="uid://ck1m8g5np0u0o"]
 
 [ext_resource type="Texture2D" uid="uid://far0h7yj6tc2" path="res://resources/textures/1-1.png" id="1_3vi7k"]
+[ext_resource type="Script" uid="uid://ugeg0c7m1jit" path="res://engine.gd" id="1_vm4q1"]
 [ext_resource type="Texture2D" uid="uid://b704qx1x8w0kt" path="res://resources/textures/1-2.png" id="2_3h1ab"]
 [ext_resource type="Script" uid="uid://ytm5b2spoiwy" path="res://main_character.gd" id="3_3h1ab"]
 [ext_resource type="Script" uid="uid://hyp4mw7h8tts" path="res://enemy.gd" id="4_7if1s"]
 [ext_resource type="Script" uid="uid://cja62doauxp4t" path="res://weapon.gd" id="4_v6avs"]
+[ext_resource type="Script" uid="uid://35m0x3smbr6o" path="res://sub_viewport.gd" id="5_8qak7"]
+[ext_resource type="Script" uid="uid://bkby7kvigwkeh" path="res://stat_updated.gd" id="6_0f2yp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7if1s"]
 texture = ExtResource("1_3vi7k")
@@ -36,6 +39,7 @@ size = Vector2(20, 32)
 distance = -551.0
 
 [node name="Node2D" type="Node2D" unique_id=630438047]
+script = ExtResource("1_vm4q1")
 
 [node name="MapManager" type="Node2D" parent="." unique_id=867709703]
 
@@ -65,7 +69,7 @@ shape = SubResource("RectangleShape2D_3h1ab")
 
 [node name="Camera2D" type="Camera2D" parent="Entities/MainCharacter" unique_id=1629389874]
 
-[node name="Weapon" type="Area2D" parent="Entities/MainCharacter" unique_id=1181241968]
+[node name="Weapon" type="StaticBody2D" parent="Entities/MainCharacter" unique_id=337946347]
 visible = false
 position = Vector2(0, -16)
 collision_layer = 2
@@ -87,8 +91,48 @@ rotation = -3.1415927
 color = Color(0.3665946, 0.3665946, 0.36659458, 1)
 
 [node name="DamageTaken" type="Label" parent="Entities/MainCharacter" unique_id=1827744354]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 495.0
+offset_top = -531.0
+offset_right = 638.0
+offset_bottom = -508.0
+text = "Life: "
+
+[node name="PanelContainer" type="PanelContainer" parent="Entities/MainCharacter" unique_id=36879595]
+z_index = -1
+clip_contents = true
+offset_left = 500.0
+offset_top = -480.0
+offset_right = 900.0
+offset_bottom = -224.0
+size_flags_stretch_ratio = 0.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Entities/MainCharacter/PanelContainer" unique_id=729686518]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Entities/MainCharacter/PanelContainer/SubViewportContainer" unique_id=965000554]
+handle_input_locally = false
+size = Vector2i(400, 256)
+size_2d_override = Vector2i(10, 10)
+render_target_update_mode = 4
+script = ExtResource("5_8qak7")
+
+[node name="Camera2D_Minimap" type="Camera2D" parent="Entities/MainCharacter/PanelContainer/SubViewportContainer/SubViewport" unique_id=1395800116]
+offset = Vector2(-1080, -1096)
+zoom = Vector2(0.1, 0.1)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/MainCharacter" unique_id=991081842]
+remote_path = NodePath("../PanelContainer/SubViewportContainer/SubViewport/Camera2D_Minimap")
+
+[node name="StatUpdated" type="Label" parent="Entities/MainCharacter" unique_id=1588044060]
+offset_left = -46.0
+offset_top = -49.0
+offset_right = -6.0
+offset_bottom = -26.0
+theme_override_colors/font_color = Color(0.7411765, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "None"
+clip_text = true
+script = ExtResource("6_0f2yp")
 
 [node name="Enemies" type="Node2D" parent="Entities" unique_id=1388524549]
 
@@ -98,14 +142,15 @@ offset_bottom = 23.0
 
 [node name="Basics" type="Node2D" parent="Entities/Enemies" unique_id=619768575]
 
-[node name="Enemy" type="CharacterBody2D" parent="Entities/Enemies/Basics" unique_id=1006206184 node_paths=PackedStringArray("player")]
-position = Vector2(100, 0)
+[node name="Enemy" type="CharacterBody2D" parent="Entities/Enemies/Basics" unique_id=1006206184 node_paths=PackedStringArray("player", "weapon")]
+position = Vector2(400, 0)
 rotation = -1.5707964
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_7if1s")
 player = NodePath("../../../MainCharacter")
-metadata/Life = 50
+weapon = NodePath("")
+metadata/Damage = 15.0
 
 [node name="ColorRect" type="ColorRect" parent="Entities/Enemies/Basics/Enemy" unique_id=1952218270]
 offset_top = -16.0
@@ -128,13 +173,14 @@ rotation = 1.5707964
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
-[node name="Enemy2" type="CharacterBody2D" parent="Entities/Enemies/Basics" unique_id=1408790169 node_paths=PackedStringArray("player")]
-position = Vector2(200, 0)
+[node name="Enemy2" type="CharacterBody2D" parent="Entities/Enemies/Basics" unique_id=1408790169 node_paths=PackedStringArray("player", "weapon")]
+position = Vector2(1000, 0)
 rotation = -1.5707964
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_7if1s")
 player = NodePath("../../../MainCharacter")
+weapon = NodePath("")
 metadata/Life = 50
 
 [node name="ColorRect" type="ColorRect" parent="Entities/Enemies/Basics/Enemy2" unique_id=1385577327]
@@ -158,13 +204,14 @@ rotation = 1.5707964
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
-[node name="Enemy3" type="CharacterBody2D" parent="Entities/Enemies/Basics" unique_id=194564155 node_paths=PackedStringArray("player")]
-position = Vector2(-100, 0)
+[node name="Enemy3" type="CharacterBody2D" parent="Entities/Enemies/Basics" unique_id=194564155 node_paths=PackedStringArray("player", "weapon")]
+position = Vector2(-1000, 0)
 rotation = -1.5707964
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_7if1s")
 player = NodePath("../../../MainCharacter")
+weapon = NodePath("")
 metadata/Life = 50
 
 [node name="ColorRect" type="ColorRect" parent="Entities/Enemies/Basics/Enemy3" unique_id=759909182]
@@ -188,13 +235,14 @@ rotation = 1.5707964
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
-[node name="Enemy4" type="CharacterBody2D" parent="Entities/Enemies/Basics" unique_id=1641855018 node_paths=PackedStringArray("player")]
-position = Vector2(-200, 0)
+[node name="Enemy4" type="CharacterBody2D" parent="Entities/Enemies/Basics" unique_id=1641855018 node_paths=PackedStringArray("player", "weapon")]
+position = Vector2(-300, 0)
 rotation = -1.5707964
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_7if1s")
 player = NodePath("../../../MainCharacter")
+weapon = NodePath("")
 metadata/Life = 50
 
 [node name="ColorRect" type="ColorRect" parent="Entities/Enemies/Basics/Enemy4" unique_id=214388850]
@@ -229,5 +277,3 @@ shape = SubResource("WorldBoundaryShape2D_3h1ab")
 position = Vector2(-1610, -11)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_3h1ab")
-
-[connection signal="body_entered" from="Entities/MainCharacter/Weapon" to="Entities/MainCharacter/Weapon" method="_on_body_entered"]

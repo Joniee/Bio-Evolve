@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bbnqead47jd8w"]
+
+[ext_resource type="Script" uid="uid://hyp4mw7h8tts" path="res://enemy.gd" id="1_2gpuw"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1248181433]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_2gpuw")
+
+[node name="Capacities" type="Node" parent="." unique_id=1763283303]

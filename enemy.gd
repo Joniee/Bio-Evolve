@@ -4,10 +4,12 @@ extends CharacterBody2D
 @export var weapon: Area2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
-const DAMAGE = 10
+const DAMAGE = 10.0
 
 var decision_timer := 0.0
 var erratic_direction := 0
+
+var life_points := 50
 
 func _physics_process(delta: float) -> void:
 	randomize()
@@ -21,7 +23,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := player.global_position.x - global_position.x
 	if direction > 5 and direction < 800:
 		velocity.x = SPEED
@@ -40,14 +41,16 @@ func _physics_process(delta: float) -> void:
 			
 	for i in get_slide_collision_count():
 		if(get_slide_collision(i).get_collider() == player):
-			player.set_meta("Life", player.get_meta("Life")-DAMAGE)
-			player.position.x -= 30
+			player.takeDamage(DAMAGE)
+		if(get_slide_collision(i).get_collider() == weapon):
+			life_points -= get_slide_collision(i).get_collider().get_meta("Damage")
+			print("sashh")
 	
 	
-	$DamageTaken.text = str(get_meta("Life"))
+	$DamageTaken.text = str(life_points)
 	
-	if(get_meta("Life") < 0):
+	if(life_points <= 0):
 		position.x = 0
-		set_meta("Life", 50)
+		life_points = 50
 		
 	move_and_slide()
