@@ -5,6 +5,9 @@ const SPEED = deg_to_rad(5)
 const attack_cooldown = 0.5
 var attack_timer := 0.0
 
+var current_weapon := "sword of thieves"
+var weapons := Dictionary()
+
 var look_direction := Vector2.RIGHT
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +34,13 @@ func _process(delta: float) -> void:
 		visible = false
 		$CollisionWeapon.disabled = true
 	
-	
+	match current_weapon:
+		"sword of thieves":
+			swingAttack()
+		"bow of nether":
+			throwTwinProjectiles("arrow")
+		"wand of the moon":
+			throwMagic()
 		
 	
 
@@ -46,3 +55,18 @@ func aim_direction():
 	else:
 		# Si no, usamos la posición del ratón relativa al personaje
 		look_direction = (get_global_mouse_position() - global_position).normalized()
+
+func swingAttack():
+	pass
+	
+#It throws a projectile affected by gravity.
+func throwArrow():
+	pass
+
+#It throws a projectile not affected by gravity.
+func throwMagic():
+	pass
+
+#It throws a multiple projectiles (it calls throwArrow/throwMagic... few times)
+func throwTwinProjectiles(arrow: String):
+	pass

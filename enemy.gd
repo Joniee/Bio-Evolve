@@ -1,15 +1,16 @@
 extends CharacterBody2D
 
 @export var player: CharacterBody2D
-@export var weapon: Area2D
-const SPEED = 100.0
+@export var weapon: StaticBody2D
+const SPEED = 70.0
 const JUMP_VELOCITY = -400.0
 const DAMAGE = 10.0
 
 var decision_timer := 0.0
 var erratic_direction := 0
 
-var life_points := 50
+var max_hp := 50.0
+var life_points := 50.0
 
 func _physics_process(delta: float) -> void:
 	randomize()
@@ -26,16 +27,20 @@ func _physics_process(delta: float) -> void:
 	var direction := player.global_position.x - global_position.x
 	if direction > 5 and direction < 800:
 		velocity.x = SPEED
+		$Sprite2D.flip_h = false
 	elif direction < 5 and direction > -800:
 		velocity.x = -SPEED
+		$Sprite2D.flip_h = true
 	else:
 		if(decision_timer <= 0):
 			erratic_direction = randi_range(-1, 1)
 			decision_timer = randi_range(0.5, 3.0)
 		if (erratic_direction < 0):
 			velocity.x = SPEED * 0.5
+			$Sprite2D.flip_h = false
 		elif (erratic_direction > 0):
 			velocity.x = -SPEED * 0.5
+			$Sprite2D.flip_h = true
 		else:
 			velocity.x = 0
 			
@@ -44,13 +49,13 @@ func _physics_process(delta: float) -> void:
 			player.takeDamage(DAMAGE)
 		if(get_slide_collision(i).get_collider() == weapon):
 			life_points -= get_slide_collision(i).get_collider().get_meta("Damage")
-			print("sashh")
 	
 	
 	$DamageTaken.text = str(life_points)
 	
 	if(life_points <= 0):
-		position.x = 0
-		life_points = 50
+		owner.set_meta("enemies_alive", owner.get_meta("enemies_alive")-1)
+		owner.set_meta("world_level", owner.get_meta("world_level") + (max_hp * 0.01))
+		queue_free()
 		
 	move_and_slide()

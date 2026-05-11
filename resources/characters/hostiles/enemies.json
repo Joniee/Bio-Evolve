@@ -1,0 +1,100 @@
+{
+	"enemies": [
+		{
+			"basic": [
+				{
+					"id": "slime",
+					"name": "Slime",
+					"species": "slime",
+					"level": 1.0,
+					"health": 50.0,
+					"damage": 5.0,
+					"armor": 0.0,
+					"required_world_level": 1.0,
+					"evolves_to": [
+						"slime_sand",
+						"slime_water"
+					]
+				},
+				{
+					"id": "wolf",
+					"name": "Wolf",
+					"species": "wolf",
+					"level": 1.0,
+					"health": 80.0,
+					"damage": 10.0,
+					"armor": 2.0,
+					"required_world_level": 1.0,
+					"evolves_to": []
+				}
+			]
+		},
+		{
+			"evolves": [
+				{
+					"id": "slime_magma",
+					"name": "Magma Slime",
+					"species": "slime",
+					"level": 10.0,
+					"health": 120.0,
+					"damage": 18.0,
+					"armor": 5.0,
+					"required_world_level": 10.0,
+					"evolves_to": [
+						"slime_stone"
+					]
+				},
+				{
+					"id": "slime_water",
+					"name": "Water Slime",
+					"species": "slime",
+					"level": 10.0,
+					"health": 80.0,
+					"damage": 12.0,
+					"armor": 3.0,
+					"required_world_level": 10.0,
+					"evolves_to": [
+						"slime_frost"
+					]
+				},
+				{
+					"id": "slime_stone",
+					"name": "Rock Slime",
+					"species": "slime",
+					"level": 25.0,
+					"health": 300.0,
+					"damage": 35.0,
+					"armor": 10.0,
+					"required_world_level": 40.0,
+					"evolves_to": []
+				},
+				{
+					"id": "slime_frost",
+					"name": "Frost Slime",
+					"species": "slime",
+					"level": 25.0,
+					"health": 220.0,
+					"damage": 28.0,
+					"armor": 6.0,
+					"required_world_level": 25.0,
+					"evolves_to": [
+						"slime_stone"
+					]
+				},
+				{
+					"id": "slime_sand",
+					"name": "Slime Sand",
+					"species": "slime",
+					"level": 5.0,
+					"health": 150.0,
+					"damage": 20.0,
+					"armor": 1.0,
+					"required_world_level": 5.0,
+					"evolves_to": [
+						"slime_magma"
+					]
+				}
+			]
+		}
+	]
+}

@@ -10,6 +10,7 @@ var invulnerability_timer := 0.0
 var life_points := 100
 var max_life_points := 500
 var status := "Alive"
+var debuff := Dictionary()
 
 func _physics_process(delta: float) -> void:
 	
@@ -47,6 +48,6 @@ func stats() -> void:
 	if(life_points > 500):
 		life_points = max_life_points
 	if(life_points <= 0):
-		life_points = 100
 		position.x = 0
+		life_points = 100
 		
