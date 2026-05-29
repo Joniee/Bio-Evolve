@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bknxtpxvhg2o1"]
+
+[ext_resource type="Script" uid="uid://d0lcqraka5y4n" path="res://arrow.gd" id="1_a8t2u"]
+[ext_resource type="Texture2D" uid="uid://dhbyvtwpq3q5u" path="res://resources/projectiles/Arrow.png" id="2_08ca5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8t2u"]
+radius = 1.9999995
+height = 11.999996
+
+[node name="Bullet" type="CharacterBody2D" unique_id=1183329599]
+rotation = 0.34906584
+script = ExtResource("1_a8t2u")
+
+[node name="Colliders" type="CollisionShape2D" parent="." unique_id=779899022]
+position = Vector2(-4.6984634, 1.7101007)
+rotation = 1.2217305
+shape = SubResource("CapsuleShape2D_a8t2u")
+
+[node name="ManaBulllet" type="Sprite2D" parent="." unique_id=283870090]
+position = Vector2(-15.035083, 5.4723225)
+rotation = -0.34906584
+scale = Vector2(1.0714285, 1)
+texture = ExtResource("2_08ca5")

@@ -7,25 +7,33 @@
 					"name": "Slime",
 					"species": "slime",
 					"level": 1.0,
-					"health": 50.0,
+					"health": 40.0,
 					"damage": 5.0,
 					"armor": 0.0,
+					"speed": 60.0,
 					"required_world_level": 1.0,
+					"path": "res://resources/characters/hostiles/Slime.png",
 					"evolves_to": [
 						"slime_sand",
 						"slime_water"
-					]
+					],
+					"actions": []
 				},
 				{
 					"id": "wolf",
 					"name": "Wolf",
 					"species": "wolf",
 					"level": 1.0,
-					"health": 80.0,
+					"health": 60.0,
 					"damage": 10.0,
-					"armor": 2.0,
+					"armor": 1.0,
+					"speed": 100.0,
 					"required_world_level": 1.0,
-					"evolves_to": []
+					"path": "res://resources/characters/hostiles/Wolf.png",
+					"evolves_to": [],
+					"actions": [
+						"dash"
+					]
 				}
 			]
 		},
@@ -36,12 +44,17 @@
 					"name": "Magma Slime",
 					"species": "slime",
 					"level": 10.0,
-					"health": 120.0,
+					"health": 80.0,
 					"damage": 18.0,
-					"armor": 5.0,
+					"armor": 4.0,
+					"speed": 80.0,
 					"required_world_level": 10.0,
+					"path": "res://resources/characters/hostiles/MagmaSlime.png",
 					"evolves_to": [
 						"slime_stone"
+					],
+					"actions": [
+						"shoot"
 					]
 				},
 				{
@@ -49,12 +62,17 @@
 					"name": "Water Slime",
 					"species": "slime",
 					"level": 10.0,
-					"health": 80.0,
+					"health": 60.0,
 					"damage": 12.0,
-					"armor": 3.0,
+					"armor": 0.0,
+					"speed": 70.0,
 					"required_world_level": 10.0,
+					"path": "res://resources/characters/hostiles/WaterSlime.png",
 					"evolves_to": [
 						"slime_frost"
+					],
+					"actions": [
+						"dash"
 					]
 				},
 				{
@@ -62,23 +80,34 @@
 					"name": "Rock Slime",
 					"species": "slime",
 					"level": 25.0,
-					"health": 300.0,
+					"health": 80.0,
 					"damage": 35.0,
-					"armor": 10.0,
+					"armor": 5.0,
+					"speed": 60.0,
 					"required_world_level": 40.0,
-					"evolves_to": []
+					"path": "res://resources/characters/hostiles/StoneSlime.png",
+					"evolves_to": [],
+					"actions": [
+						"shoot"
+					]
 				},
 				{
 					"id": "slime_frost",
 					"name": "Frost Slime",
 					"species": "slime",
 					"level": 25.0,
-					"health": 220.0,
+					"health": 90.0,
 					"damage": 28.0,
-					"armor": 6.0,
+					"armor": 1.0,
+					"speed": 50.0,
 					"required_world_level": 25.0,
+					"path": "res://resources/characters/hostiles/FrostSlime.png",
 					"evolves_to": [
 						"slime_stone"
+					],
+					"actions": [
+						"dash",
+						"shoot"
 					]
 				},
 				{
@@ -86,12 +115,18 @@
 					"name": "Slime Sand",
 					"species": "slime",
 					"level": 5.0,
-					"health": 150.0,
+					"health": 20.0,
 					"damage": 20.0,
-					"armor": 1.0,
+					"armor": 0.0,
+					"speed": 40.0,
 					"required_world_level": 5.0,
+					"path": "res://resources/characters/hostiles/SandSlime.png",
 					"evolves_to": [
 						"slime_magma"
+					],
+					"actions": [
+						"dash",
+						"shoot"
 					]
 				}
 			]

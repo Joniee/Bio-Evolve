@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dhbxihflgh3p8"]
+
+[ext_resource type="Script" uid="uid://dbyb24d13kh5j" path="res://boss.gd" id="1_4jvlg"]
+[ext_resource type="Texture2D" uid="uid://q6384gh5k2j6" path="res://resources/characters/boss/ArchmageF1.png" id="2_paxtu"]
+[ext_resource type="Script" uid="uid://bpeto665ish8h" path="res://AIMove.gd" id="3_ohn0q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_paxtu"]
+radius = 51.50971
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7if1s"]
+size = Vector2(67, 28)
+
+[node name="Boss" type="CharacterBody2D" unique_id=2072579611]
+rotation = -1.5707964
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_4jvlg")
+metadata/_edit_group_ = true
+
+[node name="CollisionFase1" type="CollisionShape2D" parent="." unique_id=1939111737]
+light_mask = 3
+visibility_layer = 3
+shape = SubResource("CircleShape2D_paxtu")
+
+[node name="DamageTaken" type="Label" parent="." unique_id=387372191]
+offset_left = 39.0
+offset_top = -60.0
+offset_right = 65.0
+offset_bottom = -37.0
+rotation = 1.5707964
+theme_override_colors/font_color = Color(0.47058824, 0, 0.41568628, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132175522]
+position = Vector2(-1.0000061, 0.49999997)
+rotation = 1.5707964
+scale = Vector2(1.0078125, 0.9531251)
+texture = ExtResource("2_paxtu")
+flip_h = true
+
+[node name="EnemySensor" type="EnemySensor" parent="." unique_id=1096054500]
+
+[node name="CollisionFase2" type="CollisionShape2D" parent="." unique_id=2137508261]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-0.49999997, -0.99999946)
+shape = SubResource("RectangleShape2D_7if1s")
+
+[node name="AIMoveController" type="Node2D" parent="." unique_id=2078291154 node_paths=PackedStringArray("sensor_node")]
+script = ExtResource("3_ohn0q")
+sensor_node = NodePath("../BossSensor")
+metadata/_custom_type_script = "uid://q0cv82uffr5x"
+
+[node name="BossSensor" type="EnemySensor" parent="." unique_id=113764710]

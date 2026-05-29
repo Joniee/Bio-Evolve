@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://7a51c5g1lafw"]
+
+[ext_resource type="Script" uid="uid://dyc4rfm4b4j2m" path="res://projectiles.gd" id="1_5yvoe"]
+[ext_resource type="Texture2D" uid="uid://3a36grcoh1hu" path="res://resources/projectiles/Mana.png" id="1_f3mvw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5yvoe"]
+radius = 3.1622782
+
+[node name="Bullet" type="CharacterBody2D" unique_id=1183329599]
+rotation = 0.34906584
+script = ExtResource("1_5yvoe")
+
+[node name="Colliders" type="CollisionShape2D" parent="." unique_id=779899022]
+shape = SubResource("CircleShape2D_5yvoe")
+
+[node name="ManaBulllet" type="Sprite2D" parent="." unique_id=283870090]
+rotation = -0.34906584
+scale = Vector2(1.0714285, 1)
+texture = ExtResource("1_f3mvw")

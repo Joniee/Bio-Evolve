@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c831dxs31kabp"
-path="res://.godot/imported/Nube 1.png-1486f2dddb22062d1d4ffcf00ef22837.ctex"
+uid="uid://ddged7ya8ovbw"
+path="res://.godot/imported/Arrow_64.png-874a875319326d022c4586907819bf0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/backgorund/Nube 1.png"
-dest_files=["res://.godot/imported/Nube 1.png-1486f2dddb22062d1d4ffcf00ef22837.ctex"]
+source_file="res://resources/projectiles/Arrow_64.png"
+dest_files=["res://.godot/imported/Arrow_64.png-874a875319326d022c4586907819bf0d.ctex"]
 
 [params]
 

@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -450.0
+const SPAWN_POINT = Vector2i(0, -200)
 
 const ATTACK_COOLDOWN = 0.5
 const TAKEDAMAGE_COOLDOWN = 0.2
 var attack_timer := 0.0
 var invulnerability_timer := 0.0
-var life_points := 100
+var health := 100
 var max_life_points := 500
 var status := "Alive"
 var debuff := Dictionary()
@@ -33,21 +34,23 @@ func _physics_process(delta: float) -> void:
 	
 	if(invulnerability_timer > 0):
 		invulnerability_timer -= 0.1 * delta
-	$DamageTaken.text = "LP: " + str(life_points)
+	$DamageTaken.text = "LP: " + str(health)
 	stats()
+	set_meta("Pos", Vector2(position.x, position.y))
 	move_and_slide()
 
 func takeDamage(damage: float) -> void:
 	if(invulnerability_timer <= 0.0):
-		life_points -= damage
+		health -= damage
 		position.x -= 10
 		$StatUpdated.show_information(str(damage))
 		invulnerability_timer = TAKEDAMAGE_COOLDOWN
 	
 func stats() -> void:
-	if(life_points > 500):
-		life_points = max_life_points
-	if(life_points <= 0):
-		position.x = 0
-		life_points = 100
+	if(health > 500):
+		health = max_life_points
+	if(health <= 0):
+		position = SPAWN_POINT
+		owner.deads += 1
+		health = 100
 		

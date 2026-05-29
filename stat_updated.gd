@@ -19,4 +19,3 @@ func show_information(data: String) ->void:
 	text = data
 	visible = true
 	show_timer = cooldown
-	print("show")

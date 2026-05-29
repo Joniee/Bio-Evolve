@@ -1,55 +1,49 @@
 {
-    "weapons": [
+	"weapons": [
 		{
-            "id": "sword_of_thieves",
-            "name": "Sword of Thieves",
-            "type": "melee",
-            "level": 1.0,
-            "damage": 10.0,
-            "crit_chance": 0.1,
-            "crit_multiplier": 1.5,
-            "lifesteal": 0.05,
-            "cooldown": 1.0,
-            "attack_speed": 1.2,
-            "knockback": 5.0,
-            "debuff": "armor_break"
+			"id": "sword_of_thieves",
+			"name": "Sword of Thieves",
+			"type": "melee",
+			"level": 1.0,
+			"damage": 20.0,
+			"crit_chance": 0.1,
+			"crit_multiplier": 1.5,
+			"lifesteal": 0.05,
+			"cooldown": 1.0,
+			"attack_speed": 1.2,
+			"knockback": 5.0,
+			"debuff": "armor_break",
+			"path": "res://resources/weapons/Sword_of_thieves.png"
 		},
-        {
-            "id": "bow_of_the_nether",
-            "name": "Bow of Shadows",
-            "type": "ranged",
-            "level": 1.0,
-            "damage": 8.0,
-            "crit_chance": 0.15,
-            "crit_multiplier": 2.0,
-            "lifesteal": 0.03,
-            "cooldown": 0.5,
-            "attack_speed": 6.0,
-            "knockback": 1.0,
-            "debuff": "attack_speed_augmented"
-        },
-        {
-            "id": "staff_of_elements",
-            "name": "Staff of Elements",
-            "type": "magic",
-            "level": 1.0,
-            "damage": 12.0,
-            "crit_chance": 0.5,
-            "crit_multiplier": 2.5,
-            "lifesteal": 0.02,
-            "cooldown": 3.0,
-            "attack_speed": 10.0,
-            "knockback": 0.0,
-            "debuff": "bleeding"
-        }
-    ],
-    "arrows": [
-        {
-            "id": "wooden_arrow",
-            "name": "Wooden Arrow",
-            "type": "ranged",
-            "level": 1.0,
-            "damage": 1.5
-        }
-    ]
+		{
+			"id": "bow_of_the_nether",
+			"name": "Bow of the Nether",
+			"type": "ranged",
+			"level": 1.0,
+			"damage": 10.0,
+			"crit_chance": 0.15,
+			"crit_multiplier": 2.0,
+			"lifesteal": 0.03,
+			"cooldown": 0.5,
+			"attack_speed": 6.0,
+			"knockback": 1.0,
+			"debuff": "attack_speed_augmented",
+			"path": "res://resources/weapons/Bow_of_the_nether.png"
+		},
+		{
+			"id": "wand_of_the_moon",
+			"name": "Wand of the Moon",
+			"type": "magic",
+			"level": 1.0,
+			"damage": 5.0,
+			"crit_chance": 0.5,
+			"crit_multiplier": 2.5,
+			"lifesteal": 0.02,
+			"cooldown": 3.0,
+			"attack_speed": 10.0,
+			"knockback": 0.0,
+			"debuff": "bleeding",
+			"path": "res://resources/weapons/Wand_of_the_moon.png"
+		}
+	]
 }

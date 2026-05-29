@@ -1,22 +1,38 @@
 [gd_scene format=3 uid="uid://bbnqead47jd8w"]
 
-[ext_resource type="Script" uid="uid://d2ccol6kjxvnd" path="res://BaseEnemy.gd" id="1_2gpuw"]
+[ext_resource type="Script" uid="uid://dwext5emd02r5" path="res://enemyEngine.gd" id="1_1cwmm"]
+[ext_resource type="Script" uid="uid://bpeto665ish8h" path="res://AIMove.gd" id="1_8eogs"]
+[ext_resource type="Texture2D" uid="uid://dsh0ar4hytv4m" path="res://resources/characters/hostiles/WaterSlime.png" id="2_1cwmm"]
+[ext_resource type="Script" uid="uid://xdb1hiqr81eh" path="res://AIActions.gd" id="3_xfkfl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8eogs"]
-size = Vector2(20, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7if1s"]
+size = Vector2(29, 32)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1248181433]
+[node name="Enemy" type="CharacterBody2D" unique_id=2072579611]
+rotation = -1.5707964
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_2gpuw")
+script = ExtResource("1_1cwmm")
+metadata/Life = 50
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1701110282]
+[node name="AIMoveController" type="Node2D" parent="." unique_id=1273497943 node_paths=PackedStringArray("sensor_node")]
+script = ExtResource("1_8eogs")
+sensor_node = NodePath("../EnemySensor")
+metadata/_custom_type_script = "uid://q0cv82uffr5x"
+
+[node name="AIActionController" type="Node2D" parent="." unique_id=2379598 node_paths=PackedStringArray("sensor_node")]
+script = ExtResource("3_xfkfl")
+sensor_node = NodePath("../EnemySensor")
+metadata/_custom_type_script = "uid://q0cv82uffr5x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939111737]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(10, 0)
-shape = SubResource("RectangleShape2D_8eogs")
+shape = SubResource("RectangleShape2D_7if1s")
 
-[node name="DamageTaken" type="Label" parent="." unique_id=948703277]
+[node name="DamageTaken" type="Label" parent="." unique_id=387372191]
 offset_left = 39.0
 offset_top = -11.999998
 offset_right = 65.0
@@ -24,5 +40,13 @@ offset_bottom = 11.000002
 rotation = 1.5707964
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1065588620]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132175522]
+position = Vector2(15.5, 0)
+rotation = 1.5707964
+scale = Vector2(0.63281226, 0.61718744)
+texture = ExtResource("2_1cwmm")
+flip_h = true
+
+[node name="EnemySensor" type="EnemySensor" parent="." unique_id=1096054500]

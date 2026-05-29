@@ -45,7 +45,7 @@ offset_left = 831.0
 offset_top = 499.0
 offset_right = 930.0
 offset_bottom = 522.0
-text = "Version 0.2.2"
+text = "Version 0.6.2"
 
 [connection signal="pressed" from="New Game Btn" to="New Game Btn" method="_on_pressed"]
 [connection signal="pressed" from="Quit game" to="Quit game" method="_on_pressed"]
