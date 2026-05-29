@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var mapPath := "res://resources/maps/Map.txt"
+var mapPath := "res://resources/maps/Map.data"
 var map : PackedByteArray = PackedByteArray()
 
 func _ready() -> void:
@@ -11,7 +11,7 @@ func _ready() -> void:
 
 	var file = FileAccess.open(mapPath, FileAccess.READ)
 	var row = Array()
-	var data = file.get_8()
+	var data
 
 	while file.get_position() < file.get_length():
 		data = file.get_8()

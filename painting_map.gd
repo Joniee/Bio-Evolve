@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 		lastTilePlayer = playerPos
 		var map = $"..".getMap()
 		
+		
 		clear()
 		
 		
