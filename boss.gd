@@ -26,6 +26,8 @@ var dashDuration: Vector2i = Vector2i(3, 6)
 var dashDurationTimer := 0.0
 var dashDirection := Vector2()
 
+var damage := 50
+
 var shootCooldown := 1.0
 var shootTimer:= 2.0
 
@@ -41,7 +43,7 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	print(current_state)
+	collisionDetection()
 	match current_state:
 		BossState.FASE1:
 			fase1(delta)
@@ -52,6 +54,13 @@ func _physics_process(delta: float) -> void:
 
 	$DamageTaken.text = str(health)
 	move_and_slide()
+
+func collisionDetection():
+	for i in get_slide_collision_count():
+		if(get_slide_collision(i).get_collider() == player):
+			player.takeDamage(damage)
+		if(get_slide_collision(i).get_collider() == weapon):
+			takeDamage(weapon.damage)
 
 func takeDamage(amount: int) -> void:
 	health -= amount

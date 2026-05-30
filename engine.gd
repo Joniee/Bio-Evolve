@@ -12,7 +12,7 @@ var initEnemy := Array()
 var enemy_base := preload("res://Enemies.tscn")
 var boss := preload("res://Boss.tscn")
 
-var world_level := 0.0
+var world_level := 1.0
 var enemies_alive := 0
 var bosses_alive := 0
 

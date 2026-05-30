@@ -18,8 +18,8 @@ script = ExtResource("1_4jvlg")
 metadata/_edit_group_ = true
 
 [node name="CollisionFase1" type="CollisionShape2D" parent="." unique_id=1939111737]
-light_mask = 3
-visibility_layer = 3
+light_mask = 7
+visibility_layer = 7
 shape = SubResource("CircleShape2D_paxtu")
 
 [node name="DamageTaken" type="Label" parent="." unique_id=387372191]
@@ -40,8 +40,6 @@ scale = Vector2(1.0078125, 0.9531251)
 texture = ExtResource("2_paxtu")
 flip_h = true
 
-[node name="EnemySensor" type="EnemySensor" parent="." unique_id=1096054500]
-
 [node name="CollisionFase2" type="CollisionShape2D" parent="." unique_id=2137508261]
 light_mask = 3
 visibility_layer = 3
@@ -50,7 +48,6 @@ shape = SubResource("RectangleShape2D_7if1s")
 
 [node name="AIMoveController" type="Node2D" parent="." unique_id=2078291154 node_paths=PackedStringArray("sensor_node")]
 script = ExtResource("3_ohn0q")
-sensor_node = NodePath("../BossSensor")
-metadata/_custom_type_script = "uid://q0cv82uffr5x"
+sensor_node = NodePath("../EnemySensor")
 
-[node name="BossSensor" type="EnemySensor" parent="." unique_id=113764710]
+[node name="EnemySensor" type="EnemySensor" parent="." unique_id=113764710]
