@@ -110,7 +110,7 @@ func moveAction():
 
 func throwMagic():
 	var newBullet = bullet.instantiate()
-	newBullet.dir = input_vector
+	newBullet.dir = player.global_position.normalized()
 	newBullet.shooter = self
 	newBullet.init_position = global_position + Vector2(1,1)
 	add_child(newBullet)

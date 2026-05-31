@@ -45,7 +45,7 @@ offset_left = 733.0
 offset_top = 499.0
 offset_right = 940.0
 offset_bottom = 522.0
-text = "Pre-Release 1 Version 0.6.4"
+text = "Pre-Release 1 Version 0.6.5"
 
 [connection signal="pressed" from="New Game Btn" to="New Game Btn" method="_on_pressed"]
 [connection signal="pressed" from="Quit game" to="Quit game" method="_on_pressed"]
